@@ -21,13 +21,12 @@ class TarotCardDraw extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      card: Tarot[0]
+      card: false
     };
   }
   getRandomCard() {
     if (Tarot && Tarot.length) {
       var index = Helpers.getRandomInt(0, Tarot.length);
-      console.info("Index", index);
       this.setState({card: Tarot[index]});
     }
   }
@@ -35,8 +34,6 @@ class TarotCardDraw extends Component {
     this.getRandomCard();
   }
   render() {
-    console.info("Data?", Tarot);
-    console.info("State", this.state);
     return (
       <View style={styles.container}>
         <TarotCard card={this.state.card} />

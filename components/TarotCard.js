@@ -8,11 +8,18 @@ import {
 import Tarot from '../data/tarot';
 
 class TarotCard extends Component {
-  
+  renderCard() {
+    var card = require('../assets/images/back.jpg');
+    if(this.props.card) {
+      card = this.props.card.src;
+    }
+    console.info(card);
+    return card;
+  }
   render() {
     return (
         <View style={styles.imageWrapper}>
-          <Image style={styles.image} source={this.props.card.src} />
+          <Image style={styles.image} source={this.renderCard()} />
         </View>
     );
   }
