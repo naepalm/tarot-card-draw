@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         marginHorizontal: 30,
         justifyContent: 'center',
-        backgroundColor: 'blue'
+        backgroundColor: '#db4e09'
     },
     buttonText: {
         margin: 10,
