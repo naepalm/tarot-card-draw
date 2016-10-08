@@ -21,7 +21,9 @@ class TarotCardDraw extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      card: false
+      card: false,
+      isFlipped: true,
+      disableButton: false,
     };
   }
   getRandomCard() {
@@ -31,13 +33,31 @@ class TarotCardDraw extends Component {
     }
   }
   onButtonPress() {
-    this.getRandomCard();
+    // If it's the first card, just flip it from back to front
+    if (this.state.isFlipped) {
+      this.getRandomCard();
+      this.setState({ isFlipped: !this.state.isFlipped, disableButton: true }); 
+      setTimeout(function(){ 
+        this.setState({disableButton: false});
+      }.bind(this), 500);
+    // If it's not the first card, flip it to the back, then the front again
+    } else {
+      this.setState({ isFlipped: !this.state.isFlipped, disableButton: true })
+      setTimeout(function(){ 
+        this.getRandomCard();
+      }.bind(this), 500);
+      setTimeout(function(){
+        if(this.state.isFlipped) {
+          this.setState({ isFlipped: !this.state.isFlipped, disableButton: false }); 
+        }
+      }.bind(this), 1500)
+    }
   }
   render() {
     return (
       <View style={styles.container}>
-        <TarotCard card={this.state.card} />
-        <Button text="Draw a Card" onButtonPress={() => this.onButtonPress()} />
+        <TarotCard card={this.state.card} isFlipped={this.state.isFlipped} />
+        <Button text="Draw a Card" disableButton={this.state.disableButton} onButtonPress={() => this.onButtonPress()} />
       </View>
     );
   }

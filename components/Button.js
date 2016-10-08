@@ -11,7 +11,7 @@ class Button extends Component {
     render() {
         return (
             <View style={styles.buttonWrapper}>
-                <TouchableNativeFeedback background={TouchableNativeFeedback.SelectableBackground()} onPress={this.props.onButtonPress}>
+                <TouchableNativeFeedback disabled={this.props.disableButton} background={TouchableNativeFeedback.Ripple('white', false)} onPress={this.props.onButtonPress}>
                     <View style={styles.button}>
                         <Text style={styles.buttonText}>{this.props.text}</Text>
                     </View>

@@ -5,6 +5,7 @@ import {
   Image,
   View
 } from 'react-native';
+import FlipCard from 'react-native-flip-card';
 import Tarot from '../data/tarot';
 
 class TarotCard extends Component {
@@ -19,22 +20,43 @@ class TarotCard extends Component {
   render() {
     return (
         <View style={styles.imageWrapper}>
-          <Image style={styles.image} source={this.renderCard()} />
+          <FlipCard
+            style={styles.card}
+            friction={10}
+            perspective={1000}
+            flipHorizontal={true}
+            flipVertical={false}
+            flip={this.props.isFlipped}>
+            {/* Face Side */}
+            <View style={styles.imageItem}>
+              <Image style={styles.image} source={this.props.card.src} />
+            </View>
+            {/* Back Side */}
+            <View style={styles.imageItem}>
+              <Image style={styles.image} source={require('../assets/images/back.jpg')} />
+            </View>
+          </FlipCard>
         </View>
     );
   }
 } 
 
 const styles = StyleSheet.create({
+  card: {
+    borderColor: 'transparent'
+  },
   imageWrapper: {
     flex: 5, 
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  imageItem: {
+    flex: 1,
+    alignItems: 'center',
   },
   image: {
     flex: 1,
-    height: 75,
-    marginVertical: 20,
-    marginHorizontal: 30,
+    height: 400,
     resizeMode: 'contain'
   }
 });
