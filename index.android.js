@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'white',
   }
 });
 

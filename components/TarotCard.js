@@ -43,6 +43,7 @@ class TarotCard extends Component {
 
 const styles = StyleSheet.create({
   card: {
+    marginTop: 20,
     borderColor: 'transparent'
   },
   imageWrapper: {
@@ -57,7 +58,10 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     height: 400,
-    resizeMode: 'contain'
+    width: 290,
+    resizeMode: 'contain',
+    backgroundColor: 'white',
+    borderRadius: 10
   }
 });
 
